@@ -1,15 +1,14 @@
+"use strict";
 // Create a function `logCoordinates` that accepts a tuple of latitude and longitude. 
 // - The latitude is required, but the longitude is optional. 
 // - Use a type guard to log different messages based on whether the longitude is provided.
 // - Return type: void.
-
-type Coordinates = [number, number?]; 
-
-function logCoordinates(coords: Coordinates): void {
-    const [latitude, longitude] = coords; 
+function logCoordinates(coords) {
+    const [latitude, longitude] = coords;
     if (longitude !== undefined) {
         console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-    } else {
+    }
+    else {
         console.log(`Latitude: ${latitude}`);
     }
 }

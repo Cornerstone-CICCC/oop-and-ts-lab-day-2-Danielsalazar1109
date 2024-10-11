@@ -12,10 +12,15 @@ interface Manager {
   team: string;
 }
 
-function promoteToManager(dev, team) {
-  
+type PromotedEmployee = Developer & Manager;
+
+function promoteToManager(dev: Developer, team: string): PromotedEmployee {
+    return {
+        ...dev,       
+        team: team  
+    };
 }
 
 // Expected output:
-promoteToManager({ name: "Alice", skills: ["TypeScript", "React"] }, "Frontend Team") 
+console.log(promoteToManager({ name: "Alice", skills: ["TypeScript", "React"] }, "Frontend Team"))
 // { name: "Alice", skills: ["TypeScript", "React"], team: "Frontend Team" }

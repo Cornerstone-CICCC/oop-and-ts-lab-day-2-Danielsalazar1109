@@ -7,14 +7,21 @@ interface Product {
   category: string;
 }
 
-function groupByCategory(products) {
-  
+function groupByCategory(products: Product[]): Record<string, Product[]> {
+  return products.reduce((acc, product) => {
+    if (!acc[product.category]) {
+      acc[product.category] = []; 
+    }
+    acc[product.category].push(product); 
+    return acc; 
+  }, {} as Record<string, Product[]>); 
 }
 
 // Expected output:
-groupByCategory([
+const groupedProducts = groupByCategory([
   { name: "Apple", category: "Fruit" },
   { name: "Carrot", category: "Vegetable" },
   { name: "Orange", category: "Fruit" }
-])
+]);
+console.log(groupedProducts);
 // { Fruit: [{ name: "Apple", category: "Fruit" }, { name: "Orange", category: "Fruit" }], Vegetable: [{ name: "Carrot", category: "Vegetable" }] }
